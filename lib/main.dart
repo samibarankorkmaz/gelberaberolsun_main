@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_proje/screens/login_screen.dart';
-import 'package:mobil_proje/screens/signup_screen.dart';
-import 'package:mobil_proje/screens/main_page.dart';
+import 'package:GelBeraberOlsun/screens/login_screen.dart';
+import 'package:GelBeraberOlsun/screens/signup_screen.dart';
+import 'package:GelBeraberOlsun/screens/main_page.dart';
 
 void main() {
   runApp(MyApp());

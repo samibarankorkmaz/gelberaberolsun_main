@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobil_proje/main.dart';
+import 'package:GelBeraberOlsun/main.dart';
 
 enum Gender { Male, Female }
 
