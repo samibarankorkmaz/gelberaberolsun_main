@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "342569441408",
+    "project_id": "gelberaberolsun-97411",
+    "storage_bucket": "gelberaberolsun-97411.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:342569441408:android:1a875ce90f98e5ad13ae65",
+        "android_client_info": {
+          "package_name": "com.company.GelBeraberOlsun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "342569441408-ma7r7avu91ec2sv4t87c5ghkqf85a0tb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCbUHUQGUzneJpJ-I0_A28ie2KeVbvZ5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "342569441408-ma7r7avu91ec2sv4t87c5ghkqf85a0tb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
