@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:GelBeraberOlsun/screens/login_screen.dart';
-import 'package:GelBeraberOlsun/screens/signup_screen.dart';
-import 'package:GelBeraberOlsun/screens/main_page.dart';
+import 'package:gelberaberolsun/screens/login_screen.dart';
+import 'package:gelberaberolsun/screens/signup_screen.dart';
+import 'package:gelberaberolsun/screens/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -10,6 +10,7 @@ void main() async {
   runApp(MyApp());
 }
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/Login': (context) => LoginScreen(),
         '/Signup': (context) => SignupScreen(),
-        '/Main': (context) => MainPage(),
+        '/Main': (context) => const MainPage(),
       },
     );
   }

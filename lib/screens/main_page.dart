@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -20,7 +22,7 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () {
                   setState(() {});
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.home,
                   color: Colors.white,
                 ),
@@ -29,21 +31,21 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () {
                   setState(() {});
                 },
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 color: Colors.white,
               ),
               IconButton(
                 onPressed: () {
                   setState(() {});
                 },
-                icon: Icon(Icons.message),
+                icon: const Icon(Icons.message),
                 color: Colors.white,
               ),
               IconButton(
                 onPressed: () {
                   setState(() {});
                 },
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
                 color: Colors.white,
               ),
             ],

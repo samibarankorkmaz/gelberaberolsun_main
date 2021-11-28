@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:GelBeraberOlsun/main.dart';
 
+// ignore: use_key_in_widget_constructors
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -10,16 +10,17 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
   Widget otherLoginMethods() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15.0),
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           GestureDetector(
+            // ignore: avoid_print
             onTap: () => print("Facebook ile giriş yap"),
             child: Container(
               height: 50,
               width: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                   boxShadow: [
@@ -33,11 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           GestureDetector(
+            // ignore: avoid_print
             onTap: () => print("Google ile giriş yap"),
             child: Container(
               height: 50,
               width: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
                   boxShadow: [
@@ -56,51 +58,45 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget actionButtons() {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/Main');
-            },
-            child: Text('Giriş Yap'),
-          ),
-          SizedBox(
-            width: 100.0,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/Signup');
-            },
-            child: Text("Kaydol"),
-          )
-        ],
-      ),
+    return Row(
+      children: <Widget>[
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/Main');
+          },
+          child: const Text('Giriş Yap'),
+        ),
+        const SizedBox(
+          width: 100.0,
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/Signup');
+          },
+          child: const Text("Kaydol"),
+        )
+      ],
     );
   }
 
   Widget rememberMe() {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Checkbox(
-              checkColor: Colors.black,
-              activeColor: Colors.white,
-              value: isChecked,
-              onChanged: (value) {
-                setState(() {
-                  isChecked = value!;
-                });
-              }),
-          Text(
-            "Beni Hatırla",
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0),
-          )
-        ],
-      ),
+    return Row(
+      children: <Widget>[
+        Checkbox(
+            checkColor: Colors.black,
+            activeColor: Colors.white,
+            value: isChecked,
+            onChanged: (value) {
+              setState(() {
+                isChecked = value!;
+              });
+            }),
+        const Text(
+          "Beni Hatırla",
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.0),
+        )
+      ],
     );
   }
 
@@ -108,19 +104,19 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+        const Text(
           "E-posta",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10.0,
         ),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           height: 50.0,
-          child: TextField(
+          child: const TextField(
             keyboardType: TextInputType.emailAddress,
             obscureText: false,
             decoration: InputDecoration(
@@ -137,19 +133,19 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
+        const Text(
           "Şifre",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10.0,
         ),
         Container(
           alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           height: 50.0,
-          child: TextField(
+          child: const TextField(
             keyboardType: TextInputType.emailAddress,
             obscureText: true,
             decoration: InputDecoration(
@@ -166,13 +162,14 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.bottomRight,
       child: TextButton(
-        child: Text(
+        child: const Text(
           "Şifrenizi mi unuttunuz?",
           style: TextStyle(
             color: Colors.white,
           ),
         ),
         onPressed: () {
+          // ignore: avoid_print
           print("Forgot butonuna basıldı.");
         },
       ),
@@ -187,19 +184,20 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('images/a.jpg'), fit: BoxFit.fill)),
           ),
-          Container(
+          SizedBox(
             height: double.infinity,
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 60.0),
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 40.0, vertical: 60.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "Giriş Yap",
                     style: TextStyle(
                       color: Colors.white,
@@ -208,43 +206,43 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   emailForm(),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   passwordForm(),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   forgotPassword(),
                   rememberMe(),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   actionButtons(),
-                  SizedBox(
+                  const SizedBox(
                     height: 5.0,
                   ),
                   Column(
                     children: <Widget>[
-                      Text(
+                      const Text(
                         '-VEYA-',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Şununla giriş yap',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5.0,
                       ),
                       otherLoginMethods()
