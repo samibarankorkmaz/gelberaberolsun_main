@@ -1,6 +1,6 @@
 # Gel Beraber Olsun
 
-Gel beraber olsun kafe ve restoran gibi yerlerde yalnız başına olmak istemeyen ve yeni insanlarla tanışmak isteyen kişileri bir çatı altında bulunduran bir sosyal ağ projesidir.
+Gel Beraber Olsun, kafe ve restoran gibi yerlerde yalnız başına olmak istemeyen ve yeni insanlarla tanışmak isteyen kişileri bir çatı altında toplayan bir sosyal ağ projesidir.
 
 # Documentation
 
