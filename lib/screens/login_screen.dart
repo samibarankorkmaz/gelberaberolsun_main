@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gelberaberolsun/screens/signup_screen.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:gelberaberolsun/services/Auth.dart';
+import 'package:provider/provider.dart';
+
 
 // ignore: use_key_in_widget_constructors
 class LoginScreen extends StatefulWidget {
@@ -7,6 +12,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+ TextEditingController emailController=new TextEditingController();
+ TextEditingController passwordController=new TextEditingController();
+ final _signInFormKey=GlobalKey<FormState>();
+
+
   bool isChecked = false;
   Widget otherLoginMethods() {
     return Padding(
@@ -61,8 +71,20 @@ class _LoginScreenState extends State<LoginScreen> {
     return Row(
       children: <Widget>[
         ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/Main');
+          onPressed: () async{
+            if(_signInFormKey.currentState.validate()){
+              try {
+                  
+                  await Provider.of<Auth>(context, listen: false)
+                      .signInWithEmailAndPassword(
+                          emailController.text, passwordController.text);
+                  
+                  print("Tıklandı");
+                } catch (e) {
+                  print(e);
+                }
+
+            }
           },
           child: const Text('Giriş Yap'),
         ),
@@ -88,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
             value: isChecked,
             onChanged: (value) {
               setState(() {
-                isChecked = value!;
+                //isChecked = value!;
               });
             }),
         const Text(
@@ -178,6 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Login");
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -209,14 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  emailForm(),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  passwordForm(),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
+                  SignInFormWidget(signInFormKey: _signInFormKey, emailController: emailController, passwordController: passwordController),
                   forgotPassword(),
                   rememberMe(),
                   const SizedBox(
@@ -252,6 +268,75 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class SignInFormWidget extends StatelessWidget {
+  const SignInFormWidget({
+    
+    @required GlobalKey<FormState> signInFormKey,
+    @required this.emailController,
+    @required this.passwordController,
+  }) : _signInFormKey = signInFormKey;
+
+  final GlobalKey<FormState> _signInFormKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _signInFormKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextFormField(
+            
+            controller: emailController,
+            validator: (value) {
+              
+              if (!EmailValidator.validate(value)) {
+                return "Lütfen Geçerli Bir Mail Adresi Giriniz";
+              } else {
+                return null;
+              }
+            },
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.mail),
+              hintText: "Email",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+            controller: passwordController,
+            validator: (value) {
+              if (value.length < 6) {
+                return "şifre 6 karakterden kısa olamaz.";
+              } else {
+                return null;
+              }
+            },
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.lock),
+              hintText: "Password",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+         
+         
+          
         ],
       ),
     );
