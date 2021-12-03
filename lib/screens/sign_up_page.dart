@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
@@ -9,12 +11,14 @@ class SignUp extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordAgainController = TextEditingController();
 
+  SignUp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("Create Account"),
+        title: Text('Create Account'),
         centerTitle: true,
       ),
       body: Center(
@@ -25,8 +29,11 @@ class SignUp extends StatelessWidget {
               key: _signUpKey,
               child: Column(
                 children: [
-                  Text("Create Account",style: TextStyle(fontSize: 30),),
-                 SizedBox(height: 20),
+                  Text(
+                    'Create Account',
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  SizedBox(height: 20),
                   MyTextFormField(
                     label: "Full Name",
                   ),
@@ -38,20 +45,27 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   MyTextFormField(
-                    
-                    inputType: TextInputType.visiblePassword,
-                      label: "Password", controller: passwordController),
+                      inputType: TextInputType.visiblePassword,
+                      label: "Password",
+                      controller: passwordController),
                   SizedBox(height: 20),
-                  MyTextFormField(label: "Password Again",controller: passwordAgainController,),
+                  MyTextFormField(
+                    label: "Password Again",
+                    controller: passwordAgainController,
+                  ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () async{
-                      if (_signUpKey.currentState.validate() && passwordController.text==passwordAgainController.text) {
-                        await Provider.of<Auth>(context,listen: false).createUserWithEmailAndPassword(emailController.text, passwordController.text);
+                    onPressed: () async {
+                      if (_signUpKey.currentState.validate() &&
+                          passwordController.text ==
+                              passwordAgainController.text) {
+                        await Provider.of<Auth>(context, listen: false)
+                            .createUserWithEmailAndPassword(
+                                emailController.text, passwordController.text);
                         Navigator.pop(context);
                       }
                     },
-                    child: Text("SIGN UP"),
+                    child: Text('SIGN UP'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.green,
                       minimumSize: Size(350, 50),
@@ -73,15 +87,18 @@ class MyTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function validator;
   final TextInputType inputType;
+
   MyTextFormField(
-      {@required this.label,
+      {Key key,
+      @required this.label,
       this.controller,
       this.infoMessage,
-      this.validator,this.inputType});
+      this.validator,
+      this.inputType})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return TextFormField(
       keyboardType: inputType,
       validator: (value) {

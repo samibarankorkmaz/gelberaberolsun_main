@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +13,11 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  // ignore: unused_field
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // ignore: unused_field
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Gender _character = Gender.male;
+  final Gender _character = Gender.male;
 
   TextEditingController fNameController = TextEditingController();
   TextEditingController mailController = TextEditingController();
@@ -106,7 +107,6 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
- 
   Widget signUp() {
     CollectionReference userRef = _firestore.collection("Users");
 
@@ -155,21 +155,20 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: Form(
         child: Column(
-         
           children: <Widget>[
             const SizedBox(
               height: 25,
-             
+
               // decoration: BoxDecoration(
               //     image: DecorationImage(
               //         image: AssetImage('images/a.jpg'), fit: BoxFit.fill)),
             ),
             SizedBox(
-              height:25,
+              height: 25,
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 40.0, vertical: 70.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 70.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -233,7 +232,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           'Cinsiyet:',
                           style: TextStyle(color: Colors.black, fontSize: 20),
                         ),
-                        
                         signUp(),
                         const SizedBox(
                           height: 5,

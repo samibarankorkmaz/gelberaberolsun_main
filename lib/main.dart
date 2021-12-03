@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/screens/login_screen.dart';
 import 'package:gelberaberolsun/screens/sign_up_page.dart';
@@ -7,8 +9,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:gelberaberolsun/widgets/control_widget.dart';
 import 'package:provider/provider.dart';
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<Auth>(
-      create: (context)=>Auth(),
+      create: (context) => Auth(),
       child: MaterialApp(
         title: 'Login Page',
         debugShowCheckedModeBanner: false,

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +54,7 @@ class _MainPageState extends State<MainPage> {
               color: Colors.white,
             ),
             IconButton(
-                icon: Icon(Icons.login_rounded),
+                icon: const Icon(Icons.login_rounded),
                 onPressed: () async {
                   await Provider.of<Auth>(context, listen: false).singOut();
                 })
@@ -60,10 +62,8 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          
-        },
+        child: const Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
