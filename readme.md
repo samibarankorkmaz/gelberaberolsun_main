@@ -9,7 +9,6 @@ Gel Beraber Olsun, kafe ve restoran gibi yerlerde yalnız başına olmak istemey
 ![log](https://user-images.githubusercontent.com/94560965/143295217-43e970f4-28f9-43bb-a119-9f08a5637acb.PNG)
 ![kayıt](https://user-images.githubusercontent.com/94560965/143295443-2fa01917-a0c5-47dd-b554-d9c0393a140b.PNG)
 
-
 # Proje'de Görev Alanlar
 
 |Proje Ekibi            | Görevi                   |
@@ -17,4 +16,3 @@ Gel Beraber Olsun, kafe ve restoran gibi yerlerde yalnız başına olmak istemey
 |Sami Baran Korkmaz | PR ve Kodlama|
 |Yunus Emre Savan | Kodlama|
 |Mehmet Kaan | Ekip Lideri ve Kodlama|
-
