@@ -1,17 +1,21 @@
 // ignore_for_file: unused_import, avoid_print, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+
 import 'package:gelberaberolsun/screens/signup_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:provider/provider.dart';
 
+// ignore: use_key_in_widget_constructors
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final _signInFormKey = GlobalKey<FormState>();
@@ -24,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           GestureDetector(
+            // ignore: avoid_print
             onTap: () => print("Facebook ile giriş yap"),
             child: Container(
               height: 50,
@@ -42,6 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           GestureDetector(
+            // ignore: avoid_print
             onTap: () => print("Google ile giriş yap"),
             child: Container(
               height: 50,
@@ -186,6 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         onPressed: () {
+          // ignore: avoid_print
           print("Forgot butonuna basıldı.");
         },
       ),
@@ -300,6 +307,7 @@ class SignInFormWidget extends StatelessWidget {
             },
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
+              prefixIcon: Icon(Icons.mail),
               prefixIcon: const Icon(Icons.mail),
               hintText: "Email",
               border: OutlineInputBorder(
@@ -307,6 +315,8 @@ class SignInFormWidget extends StatelessWidget {
               ),
             ),
           ),
+
+          SizedBox(
           const SizedBox(
             height: 20,
           ),
@@ -321,6 +331,7 @@ class SignInFormWidget extends StatelessWidget {
             },
             obscureText: true,
             decoration: InputDecoration(
+              prefixIcon: Icon(Icons.lock),
               prefixIcon: const Icon(Icons.lock),
               hintText: "Password",
               border: OutlineInputBorder(

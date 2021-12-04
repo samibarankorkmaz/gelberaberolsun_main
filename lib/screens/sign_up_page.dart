@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
@@ -7,10 +8,20 @@ import 'package:provider/provider.dart';
 
 class SignUp extends StatelessWidget {
   final _signUpKey = GlobalKey<FormState>();
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordAgainController = TextEditingController();
 
+  @override
+  Widget build(BuildContext context) {
+    CollectionReference userRef = _firestore.collection("Users");
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text("Create Account"),
   SignUp({Key key}) : super(key: key);
 
   @override
@@ -56,6 +67,12 @@ class SignUp extends StatelessWidget {
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
+                      Map<String, dynamic> userData = {
+                        'name': nameController.text,
+                        'eposta': emailController.text,
+                        'pass': passwordController.text,
+                      };
+                      await userRef.doc().set(userData);
                       if (_signUpKey.currentState.validate() &&
                           passwordController.text ==
                               passwordAgainController.text) {
@@ -96,6 +113,7 @@ class MyTextFormField extends StatelessWidget {
       this.validator,
       this.inputType})
       : super(key: key);
+>>>>>>> master
 
   @override
   Widget build(BuildContext context) {
