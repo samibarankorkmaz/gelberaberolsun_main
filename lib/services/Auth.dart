@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -7,7 +8,6 @@ class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firebaseFirestore =FirebaseFirestore.instance;
   
-
   Future<User> createUserWithEmailAndPassword(
       String email, String password) async {
     UserCredential userCredential = await _firebaseAuth
@@ -53,5 +53,6 @@ class Auth {
   }
 
   
+
 
 }

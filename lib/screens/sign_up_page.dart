@@ -1,4 +1,6 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
@@ -20,6 +22,14 @@ class SignUp extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Create Account"),
+  SignUp({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        title: Text('Create Account'),
         centerTitle: true,
       ),
       body: Center(
@@ -31,7 +41,7 @@ class SignUp extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "Create Account",
+                    'Create Account',
                     style: TextStyle(fontSize: 30),
                   ),
                   SizedBox(height: 20),
@@ -72,7 +82,7 @@ class SignUp extends StatelessWidget {
                         Navigator.pop(context);
                       }
                     },
-                    child: Text("SIGN UP"),
+                    child: Text('SIGN UP'),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.green,
                       minimumSize: Size(350, 50),
@@ -94,12 +104,16 @@ class MyTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function validator;
   final TextInputType inputType;
+
   MyTextFormField(
-      {@required this.label,
+      {Key key,
+      @required this.label,
       this.controller,
       this.infoMessage,
       this.validator,
-      this.inputType});
+      this.inputType})
+      : super(key: key);
+>>>>>>> master
 
   @override
   Widget build(BuildContext context) {

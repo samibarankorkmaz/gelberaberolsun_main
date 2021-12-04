@@ -1,4 +1,8 @@
+// ignore_for_file: unused_import, avoid_print, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
+
+import 'package:gelberaberolsun/screens/signup_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   final _signInFormKey = GlobalKey<FormState>();
 
   bool isChecked = false;
@@ -302,13 +308,16 @@ class SignInFormWidget extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.mail),
+              prefixIcon: const Icon(Icons.mail),
               hintText: "Email",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
           ),
+
           SizedBox(
+          const SizedBox(
             height: 20,
           ),
           TextFormField(
@@ -323,6 +332,7 @@ class SignInFormWidget extends StatelessWidget {
             obscureText: true,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.lock),
+              prefixIcon: const Icon(Icons.lock),
               hintText: "Password",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),

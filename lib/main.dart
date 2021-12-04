@@ -1,7 +1,11 @@
+// ignore_for_file: unused_import, prefer_const_constructors
+
 import 'package:flutter/material.dart';
+
 import 'package:gelberaberolsun/screens/chat_page.dart';
 import 'package:gelberaberolsun/screens/login_screen.dart';
 import 'package:gelberaberolsun/screens/profile_page.dart';
+import 'package:gelberaberolsun/screens/login_screen.dart';
 import 'package:gelberaberolsun/screens/sign_up_page.dart';
 import 'package:gelberaberolsun/screens/signup_screen.dart';
 import 'package:gelberaberolsun/screens/main_page.dart';
@@ -32,6 +36,7 @@ class MyApp extends StatelessWidget {
           '/Main': (context) => MainPage(),
           '/Chat': (context) => ChatPage(),
           '/Profile': (context) => ProfilePage(),
+          '/Main': (context) => const MainPage(),
         },
       ),
     );
