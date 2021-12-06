@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, avoid_print, use_key_in_widget_constructors
+// ignore_for_file: unused_import, avoid_print, use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/screens/signup_screen.dart';
@@ -214,13 +214,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text(
+                  Text(
                     "Giriş Yap",
                     style: TextStyle(
+                      //decorationColor: Colors.black,
                       color: Colors.white,
-                      fontFamily: "OpenSans",
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+                      //fontFamily: 'fbubbles',
+                      fontSize: 40,
                     ),
                   ),
                   const SizedBox(

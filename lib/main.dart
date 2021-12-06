@@ -9,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:gelberaberolsun/widgets/control_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
     return Provider<Auth>(
       create: (context) => Auth(),
       child: MaterialApp(
-        title: 'Login Page',
+        theme: ThemeData(fontFamily: 'fbubbles'),
+        title: 'Gel Beraber Olsun | ara, sözleş, ye! | 2021',
         debugShowCheckedModeBanner: false,
         home: ControlWidget(),
         routes: {
