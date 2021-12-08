@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables, unused_import, await_only_futures
 
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,9 @@ class SignUp extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordAgainController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController meslekController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
 
   SignUp({Key key}) : super(key: key);
 
@@ -17,8 +21,11 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
-        title: Text('Create Account'),
+        backgroundColor: Colors.black,
+        title: Text(
+          'Create Account',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: Center(
@@ -35,6 +42,7 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   MyTextFormField(
+                    controller: nameController,
                     label: "Full Name",
                   ),
                   SizedBox(height: 20),
@@ -42,6 +50,16 @@ class SignUp extends StatelessWidget {
                     inputType: TextInputType.emailAddress,
                     label: "Email Adress",
                     controller: emailController,
+                  ),
+                  SizedBox(height: 20),
+                  MyTextFormField(
+                    label: "Meslek",
+                    controller: meslekController,
+                  ),
+                  SizedBox(height: 20),
+                  MyTextFormField(
+                    label: "Yaş",
+                    controller: ageController,
                   ),
                   SizedBox(height: 20),
                   MyTextFormField(
@@ -62,15 +80,31 @@ class SignUp extends StatelessWidget {
                         await Provider.of<Auth>(context, listen: false)
                             .createUserWithEmailAndPassword(
                                 emailController.text, passwordController.text);
+                        String uid = await Provider.of<Auth>(context,
+                                listen: false) //string not a future?
+                            .getCurrentUser()
+                            .uid;
+                        await Provider.of<Auth>(context, listen: false)
+                            .updateDisplayName(nameController.text);
+
+                        await Provider.of<Auth>(context, listen: false)
+                            .createUser({
+                          "name": nameController.text,
+                          "id": uid,
+                          "yas": ageController.text,
+                          "meslek": meslekController.text
+                        });
+
                         Navigator.pop(context);
                       }
                     },
                     child: Text('SIGN UP'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
-                      minimumSize: Size(350, 50),
-                      elevation: 5,
-                    ),
+                        primary: Colors.black,
+                        minimumSize: Size(350, 50),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25))),
                   )
                 ],
               ),
@@ -117,7 +151,7 @@ class MyTextFormField extends StatelessWidget {
         labelText: label,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 1, color: Colors.black),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(35),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(width: 1, color: Colors.green),
