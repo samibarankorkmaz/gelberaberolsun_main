@@ -36,14 +36,41 @@ class Auth {
 
   String getCurrentUserName() {
     User user = _firebaseAuth.currentUser;
-    return user.displayName != null ? user.displayName : null;
+    return user.displayName != null ? user.displayName : "Unknown";
+    
   }
+  Future<void> updateDisplayName(String name)async{
+   await _firebaseAuth.currentUser.updateDisplayName(name);
+  }
+  
 
   Future<void> createRequest(Map<String, dynamic> map) async {
     var allRequestsRef = _firebaseFirestore.collection("request");
-    await allRequestsRef.add(map);
+    await allRequestsRef.doc(getCurrentUser().uid).set(map);
   }
 
+  void createUser(Map<String, dynamic> map)async{
+    var usersCollectionRef = _firebaseFirestore.collection("Users");
+    await usersCollectionRef.doc(getCurrentUser().uid).set(map);
+    
+  }
+
+ CollectionReference getRef(String refPath){
+   var collectionRef=_firebaseFirestore.collection(refPath);
+   return collectionRef;
+ }
+
+ Future<DocumentSnapshot>getDocument(String refPath)async{
+   DocumentSnapshot snapshot;
+  //await getRef(refPath).doc(getCurrentUser().uid).get().then((value) => snapshot=value);
+  //return snapshot;
+   snapshot=await getRef(refPath).doc(getCurrentUser().uid).get();
+   return snapshot;
+  
+
+ }
+
+  
   Stream<QuerySnapshot> getRequestListFromApi(String refPath) {
     return _firebaseFirestore.collection(refPath).snapshots();
   }
