@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:gelberaberolsun/data/post_json.dart';
 import 'package:gelberaberolsun/services/Auth.dart';
